@@ -6,7 +6,8 @@ $.ajaxPrefilter(function (options) {
         options.headers = { Authorization: localStorage.getItem('token') || '' }
     }
 
-    // 全局挂载complete函数
+
+    // 全局统一挂载 complete 回调函数
     options.complete = function (res) {
         // console.log('执行了 complete 回调：')
         // console.log(res)
@@ -15,7 +16,7 @@ $.ajaxPrefilter(function (options) {
             // 1. 强制清空 token
             localStorage.removeItem('token')
             // 2. 强制跳转到登录页面
-            location.href = './login.html'
+            location.href = '/login.html'
         }
     }
 })
